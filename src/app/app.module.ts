@@ -57,7 +57,7 @@ import { NavbarComponent } from './components/navbar/navbar.component';
   ],
   providers: [ 
     PostsService,
-    DataService,
+    DataService, {provide: 'API_BASE_URL', useValue: 'http://jsonplaceholder.typicode.com/'},
     { provide: ErrorHandler, useClass: AppErrorHandler } 
   ],
   bootstrap: [AppComponent]

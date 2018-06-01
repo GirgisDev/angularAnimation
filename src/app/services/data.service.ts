@@ -1,13 +1,14 @@
 // import { Observable } from 'rxjs';
 import { Http } from '@angular/http';
-import { Injectable } from '@angular/core';
+import { Injectable, Inject } from '@angular/core';
 import { map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
 })
 export class DataService {
-  constructor(private url: string, private http: Http) { }
+  constructor(@Inject('API_BASE_URL') private url: string, private http: Http) {
+  }
   getAll() {
     return this.http.get(this.url)
       .pipe(map(res => res.json()));
