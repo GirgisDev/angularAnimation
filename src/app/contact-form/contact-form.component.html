@@ -1,0 +1,32 @@
+<form #contactForm="ngForm" ngForm (ngSubmit)="submitComment(contactForm)">
+  <div class="form-group">
+    <label>
+      your name
+      <input 
+        class="form-control"
+        type="text" 
+        name="name" 
+        ngModel 
+        #name="ngModel"
+        pattern="^\w{3,15}$"
+        required>
+        <span class="alert alert-danger" *ngIf="name.touched && name.errors">
+          <span *ngIf="!name.errors.valid">invalid name</span>
+        </span>
+    </label>
+  </div>
+  <div class="form-group">
+    <label>
+      your comment
+      <input 
+        class="form-control"
+        type="text" 
+        name="comment" 
+        ngModel 
+        #comment="ngModel"
+        pattern="^.{10,}$"
+        required>
+    </label>
+  </div>
+  <button class="btn btn-primary" [disabled]="!contactForm.valid">send</button>
+</form>
