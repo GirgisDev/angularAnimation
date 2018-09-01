@@ -1,0 +1,16 @@
+<div class="form-group">
+  <input 
+    type="text" 
+    class="form-control"
+    placeholder="Add item to the list"
+    [(ngModel)]="newTodo"
+    (keydown.enter)="addToList()">
+</div>
+
+<ul class="list-group">
+  <li
+    @todoAnimation
+    class="list-group-item" 
+    *ngFor="let todo of todos; index as i; trackBy: i"
+    (click)="deleteTodo(i)">{{ todo }}</li>
+</ul>

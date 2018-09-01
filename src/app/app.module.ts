@@ -1,3 +1,4 @@
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppErrorHandler } from './common/app-error-handler';
 import { BrowserModule } from '@angular/platform-browser';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
@@ -21,6 +22,7 @@ import { PostDetailsComponent } from './components/post-details/post-details.com
 import { PostsService } from './services/posts.service';
 import { DataService } from './services/data.service';
 import { NavbarComponent } from './components/navbar/navbar.component';
+import { TodoComponent } from './components/todo/todo.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +38,8 @@ import { NavbarComponent } from './components/navbar/navbar.component';
     LoginFormComponent,
     PostsComponent,
     NavbarComponent,
-    PostDetailsComponent
+    PostDetailsComponent,
+    TodoComponent
   ],
   imports: [
     BrowserModule, FormsModule, ReactiveFormsModule, HttpModule, 
@@ -52,13 +55,18 @@ import { NavbarComponent } from './components/navbar/navbar.component';
       {
         path: 'login',
         component: LoginFormComponent
+      },
+      {
+        path: 'todo',
+        component: TodoComponent
       }
-    ])
+    ]),
+    BrowserAnimationsModule
   ],
   providers: [ 
     PostsService,
     DataService, {provide: 'API_BASE_URL', useValue: 'http://jsonplaceholder.typicode.com/'},
-    { provide: ErrorHandler, useClass: AppErrorHandler } 
+    // { provide: ErrorHandler, useClass: AppErrorHandler } 
   ],
   bootstrap: [AppComponent]
 })
